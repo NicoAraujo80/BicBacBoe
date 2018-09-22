@@ -1,0 +1,1 @@
+<a href="{{ route('game.store') }}">something</a>
