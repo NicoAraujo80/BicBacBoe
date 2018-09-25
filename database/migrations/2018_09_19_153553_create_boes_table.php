@@ -18,6 +18,8 @@ class CreateBoesTable extends Migration
             $table->timestamps();
             $table->integer('bac_id');
             $table->integer('location');
+            $table->integer('status');
+
         });
     }
 

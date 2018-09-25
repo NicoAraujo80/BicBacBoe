@@ -11,13 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'pageController@getIndex')->name('index');
 
 Auth::routes();
 
-Route::resource('game', 'GameController')->only('index', 'create');
+Route::resource('game', 'GameController')->only
+('index', 'create');
 Route::get('game/store', 'GameController@store')->name('game.store');
 
 Route::get('/home', 'HomeController@index')->name('home');

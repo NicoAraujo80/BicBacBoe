@@ -18,6 +18,7 @@ class CreateBicsTable extends Migration
             $table->timestamps();
             $table->integer('game_id');
             $table->integer('location');
+            $table->integer('status');
         });
     }
 

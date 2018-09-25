@@ -18,6 +18,8 @@ class CreateBacsTable extends Migration
             $table->timestamps();
             $table->integer('bic_id');
             $table->integer('location');
+            $table->integer('status');
+
         });
     }
 
