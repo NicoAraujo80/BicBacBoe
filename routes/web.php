@@ -15,8 +15,9 @@ Route::get('/', 'pageController@getIndex')->name('index');
 
 Auth::routes();
 
-Route::resource('game', 'GameController')->only
-('index', 'create');
 Route::get('game/store', 'GameController@store')->name('game.store');
+Route::resource('game', 'GameController')->only('index', 'create', 'show');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('random', 'pageController@random')->name('random');
