@@ -18,6 +18,8 @@ class CreateGamesTable extends Migration
             $table->timestamps();
             $table->integer('bic');
             $table->integer('bac');
+            $table->integer('user_id');
+            $table->integer('otherUser');
         });
     }
 

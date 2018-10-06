@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Boe;
 use Illuminate\Http\Request;
+use App\User;
+use App\Game;
+
 
 class BoeController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -57,7 +64,7 @@ class BoeController extends Controller
      */
     public function edit(Boe $boe)
     {
-        //
+
     }
 
     /**
@@ -67,9 +74,16 @@ class BoeController extends Controller
      * @param  \App\Boe  $boe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Boe $boe)
+    public function update(Game $game, Boe $boe)
     {
-        //
+        $boe->status = 1;
+        $boe->save();
+
+        $game->bic = $boe->bac->location;
+        $game->bac = $boe->location;
+        $game->save();
+
+        return redirect()->route('game.show', $game);
     }
 
     /**

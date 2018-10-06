@@ -10,4 +10,9 @@ class Game extends Model
     {
         return $this->hasMany('App\Bic');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

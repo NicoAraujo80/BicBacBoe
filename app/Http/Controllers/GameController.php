@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Bic;
 use App\Bac;
 use App\Boe;
+use Illuminate\Support\Facades\Auth;
 
 class GameController extends Controller
 {
@@ -51,13 +52,15 @@ class GameController extends Controller
         $game = new Game;
         $game->bic = 3;
         $game->bac = 2;
+        $game->user_id = Auth::id();
+        $game->otherUser = Auth::id();
         $game->save();
 
         for ($i = 1; $i <= 9; $i++) {
             $bic = new Bic; //creates a new bic
             $bic->game_id = $game->id; //all nine bics get linked to the game that was just created
             $bic->location = $i;
-            $bic->status = 1;
+            $bic->status = 0;
             $bic->save();
             for ($j = 1; $j <= 9; $j++) {
                 $bac = new Bac;
@@ -66,7 +69,7 @@ class GameController extends Controller
                     $bac->bic_id = $lastBic[0]->id;
                 }
                 $bac->location = $j;
-                $bac->status = 1;
+                $bac->status = 0;
                 $bac->save();
                 for ($a = 1; $a <= 9; $a++) {
                     $boe = new Boe;
@@ -75,7 +78,7 @@ class GameController extends Controller
                         $boe->bac_id = $lastBac[0]->id;
                     }
                     $boe->location = $a;
-                    $boe->status = 1;
+                    $boe->status = 0;
                     $boe->save();
                 }
             }

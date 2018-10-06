@@ -18,6 +18,9 @@ Auth::routes();
 Route::get('game/store', 'GameController@store')->name('game.store');
 Route::resource('game', 'GameController')->only('index', 'create', 'show');
 
+Route::get('boe/update/{game}/{boe}', 'BoeController@update')->name('boe.update');
+Route::resource('boe', 'BoeController')->only('index');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('random', 'pageController@random')->name('random');
