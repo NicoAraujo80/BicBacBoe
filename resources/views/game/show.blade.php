@@ -15,6 +15,7 @@
         $takenBic = null;
         ?>
         @include('partials.boardGeneration._bic')
+{{-- broken --}}
         </tbody>
     </table>
 @stop
